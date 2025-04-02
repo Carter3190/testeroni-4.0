@@ -1,0 +1,13 @@
+#myButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#myButton:hover {
+    background-color: darkblue;
+}
+
