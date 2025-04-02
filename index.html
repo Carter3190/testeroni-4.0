@@ -3,32 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Site</title>
-    <link rel="stylesheet" href="style.css">
+    <title>My Website</title>
+    <link rel="stylesheet" href="style.css"> <!-- Links to CSS -->
 </head>
 <body>
+    <h1>Welcome to My Website</h1>
+    <button id="myButton">Click Me</button>
 
-    <h1>Welcome to My Site</h1>
-    
-    <!-- This div will load the button -->
-    <div id="button-container"></div>
-
-    <script>
-        // Load the button dynamically
-        fetch('button.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('button-container').innerHTML = html;
-                // After loading, apply styles and script
-                let link = document.createElement('link');
-                link.rel = 'stylesheet';
-                link.href = 'button.css';
-                document.head.appendChild(link);
-                let script = document.createElement('script');
-                script.src = 'button.js';
-                document.body.appendChild(script);
-            });
-    </script>
-
+    <script src="script.js"></script> <!-- Links to JavaScript -->
 </body>
 </html>
