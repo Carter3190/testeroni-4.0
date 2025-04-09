@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Join Auxillium</title>
+  <script>
+    function goToProfessionSection() {
+      document.getElementById('professions').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-pink-50 text-gray-800 font-sans">
+
+  <!-- Join Auxillium Button -->
+  <div class="flex justify-center items-center h-screen">
+    <button
+      onclick="goToProfessionSection()"
+      class="bg-purple-300 hover:bg-purple-400 text-white font-bold py-3 px-6 rounded-2xl shadow-lg transition">
+      Join Auxillium
+    </button>
+  </div>
+
+  <!-- Professions Section -->
+  <section id="professions" class="bg-purple-100 py-16 px-6">
+    <h2 class="text-3xl font-bold text-center text-pink-500 mb-10">Choose Your Profession</h2>
+    <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <div class="bg-pink-100 rounded-2xl shadow p-6 hover:scale-105 transition">
+        <h3 class="text-xl font-semibold text-purple-700">Software Engineer</h3>
+        <p class="text-sm text-purple-900 mt-2">Design and build apps, systems, or websites.</p>
+      </div>
+      <div class="bg-pink-100 rounded-2xl shadow p-6 hover:scale-105 transition">
+        <h3 class="text-xl font-semibold text-purple-700">Graphic Designer</h3>
+        <p class="text-sm text-purple-900 mt-2">Create visual content that captivates.</p>
+      </div>
+      <div class="bg-pink-100 rounded-2xl shadow p-6 hover:scale-105 transition">
+        <h3 class="text-xl font-semibold text-purple-700">Healthcare Worker</h3>
+        <p class="text-sm text-purple-900 mt-2">Support communities through care and compassion.</p>
+      </div>
+      <div class="bg-pink-100 rounded-2xl shadow p-6 hover:scale-105 transition">
+        <h3 class="text-xl font-semibold text-purple-700">Teacher</h3>
+        <p class="text-sm text-purple-900 mt-2">Educate and inspire the next generation.</p>
+      </div>
+      <div class="bg-pink-100 rounded-2xl shadow p-6 hover:scale-105 transition">
+        <h3 class="text-xl font-semibold text-purple-700">Project Manager</h3>
+        <p class="text-sm text-purple-900 mt-2">Coordinate and lead diverse teams.</p>
+      </div>
+      <div class="bg-pink-100 rounded-2xl shadow p-6 hover:scale-105 transition">
+        <h3 class="text-xl font-semibold text-purple-700">Entrepreneur</h3>
+        <p class="text-sm text-purple-900 mt-2">Build and grow your own business idea.</p>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
