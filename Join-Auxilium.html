@@ -1,56 +1,124 @@
-<!DOCTYPE html>
+<html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Join Auxillium</title>
-  <script>
-    function goToProfessionSection() {
-      document.getElementById('professions').scrollIntoView({ behavior: 'smooth' });
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Join Auxilium</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-  </script>
-  <script src="https://cdn.tailwindcss.com"></script>
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff;
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .JoinAuxillium-container {
+      background-color: #f8b4b4;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .JoinAuxillium-container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: white;
+      font-weight: 600;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 5px;
+      font-weight: 500;
+      color: #fff;
+    }
+
+    input {
+      padding: 12px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      font-size: 1rem;
+    }
+
+    input:required:invalid {
+      border: 2px solid #ff6b6b;
+    }
+
+    .search-btn {
+      background-color: #d6c6f7;
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .search-btn:hover {
+      background-color: #c0a0f2;
+    }
+
+    .categories-link {
+      text-align: center;
+      margin-top: 15px;
+      color: white;
+    }
+
+    .categories-link a {
+      color: #fff;
+      text-decoration: underline;
+    }
+  </style>
 </head>
-<body class="bg-pink-50 text-gray-800 font-sans">
+<body>
 
-  <!-- Join Auxillium Button -->
-  <div class="flex justify-center items-center h-screen">
-    <button
-      onclick="goToProfessionSection()"
-      class="bg-purple-300 hover:bg-purple-400 text-white font-bold py-3 px-6 rounded-2xl shadow-lg transition">
-      Join Auxillium
-    </button>
-  </div>
+  <div class="JoinAuxillium-container">
+    <h2>what do you want to bring to this service</h2>
+    <form id="JoinAuxilliumForm">
+      <label for="automotivetechnician">automotive technician</label>
+      <input type="text" id="automotivetechnician" name="automotivetechnician" required />
 
-  <!-- Professions Section -->
-  <section id="professions" class="bg-purple-100 py-16 px-6">
-    <h2 class="text-3xl font-bold text-center text-pink-500 mb-10">Choose Your Profession</h2>
-    <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-      <div class="bg-pink-100 rounded-2xl shadow p-6 hover:scale-105 transition">
-        <h3 class="text-xl font-semibold text-purple-700">Software Engineer</h3>
-        <p class="text-sm text-purple-900 mt-2">Design and build apps, systems, or websites.</p>
-      </div>
-      <div class="bg-pink-100 rounded-2xl shadow p-6 hover:scale-105 transition">
-        <h3 class="text-xl font-semibold text-purple-700">Graphic Designer</h3>
-        <p class="text-sm text-purple-900 mt-2">Create visual content that captivates.</p>
-      </div>
-      <div class="bg-pink-100 rounded-2xl shadow p-6 hover:scale-105 transition">
-        <h3 class="text-xl font-semibold text-purple-700">Healthcare Worker</h3>
-        <p class="text-sm text-purple-900 mt-2">Support communities through care and compassion.</p>
-      </div>
-      <div class="bg-pink-100 rounded-2xl shadow p-6 hover:scale-105 transition">
-        <h3 class="text-xl font-semibold text-purple-700">Teacher</h3>
-        <p class="text-sm text-purple-900 mt-2">Educate and inspire the next generation.</p>
-      </div>
-      <div class="bg-pink-100 rounded-2xl shadow p-6 hover:scale-105 transition">
-        <h3 class="text-xl font-semibold text-purple-700">Project Manager</h3>
-        <p class="text-sm text-purple-900 mt-2">Coordinate and lead diverse teams.</p>
-      </div>
-      <div class="bg-pink-100 rounded-2xl shadow p-6 hover:scale-105 transition">
-        <h3 class="text-xl font-semibold text-purple-700">Entrepreneur</h3>
-        <p class="text-sm text-purple-900 mt-2">Build and grow your own business idea.</p>
-      </div>
+      <label for="chiropractor">chiropractor</label>
+      <input type="text" id="chiropractor" name="chiropractor" required />
+
+       <label for="Pharmacy">Pharmacy</label>
+      <input type="Pharmacy" id="Pharmacy" name="Pharmacy" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required />
+
+      <button type="submit" class="submit-btn">Join Auxillium</button>
+    </form>
+
+    <div class="login-link">
+      Are you gay nigga? <a href="login.html">Sign in here</a>
     </div>
-  </section>
+  </div>
 
 </body>
 </html>
