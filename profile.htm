@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Seller Profile - Auxilium</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #f8b4b4;
+      padding: 20px;
+      text-align: center;
+      color: white;
+    }
+
+    .profile-container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 40px;
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-header {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .profile-pic-wrapper {
+      position: relative;
+      width: 180px;
+      height: 180px;
+    }
+
+    .profile-pic-wrapper label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .profile-pic-preview {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: #e0e0e0;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/847/847969.png');
+      background-size: cover; /* Ensures image covers the circle */
+      background-position: center; /* Ensures image is centered */
+      background-repeat: no-repeat;
+      border: 3px solid #d6c6f7;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .profile-pic-preview:hover {
+      background-color: #ccc;
+    }
+
+    #profile-upload {
+      display: none;
+    }
+
+    .input-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .input-group input,
+    .input-group select {
+      padding: 15px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      width: 100%;
+    }
+
+    .input-group label {
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    .stats {
+      margin: 40px 0 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .stat {
+      background-color: #d6c6f7;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      min-width: 200px;
+      text-align: center;
+    }
+
+    .portfolio {
+      margin-top: 30px;
+    }
+
+    .portfolio h3 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #444;
+    }
+
+    .portfolio-gallery {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .portfolio-item {
+      position: relative;
+      width: calc(33.33% - 13.33px);
+      height: 150px;
+      background-color: #eee;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .portfolio-preview {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+      z-index: 1;
+    }
+
+    .portfolio-item input[type="file"] {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .price-input {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background-color: #f8b4b4;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 5px 10px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      width: 120px;
+      text-align: center;
+      outline: none;
+      z-index: 3;
+    }
+
+    .price-input::placeholder {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .price-input:focus {
+      background-color: #f28b8b;
+    }
+
+    .footer-buttons {
+      display: flex;
+      justify-content: flex-start;
+      gap: 15px;
+      margin-top: 40px;
+    }
+
+    .footer-buttons button {
+      padding: 12px 24px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .continue-btn {
+      background-color: #d6c6f7;
+      color: white;
+    }
+
+    .continue-btn:hover {
+      background-color: #b6a3f0;
+    }
+
+    .back-btn {
+      background-color: #ccc;
+      color: #333;
+    }
+
+    .back-btn:hover {
+      background-color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Seller Profile - Auxilium</h1>
+  </header>
+
+  <div class="profile-container">
+    <div class="profile-header">
+      <div class="profile-pic-wrapper">
+        <label for="profile-upload">Profile Picture</label>
+        <div class="profile-pic-preview" onclick="document.getElementById('profile-upload').click()"></div>
+        <input type="file" id="profile-upload" accept="image/*" onchange="previewImage(event)">
+      </div>
+
+      <div class="input-group">
+        <div>
+          <label>Username</label>
+          <input type="text" placeholder="Enter your username">
+        </div>
+        <div>
+          <label>Service you're offering</label>
+          <input type="text" placeholder="e.g. Graphic Design, Tutoring">
+        </div>
+        <div>
+          <label>Where are you from?</label>
+          <input type="text" placeholder="City, Country">
+        </div>
+        <div>
+          <label>Language</label>
+          <select>
+            <option>English</option>
+            <option>Spanish</option>
+            <option>French</option>
+            <option>Arabic</option>
+            <option>Mandarin</option>
+            <option>Hindi</option>
+            <option>Portuguese</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">⏱ Seller Since: <span id="signupDate"></span></div>
+    </div>
+
+    <div class="portfolio">
+      <h3>Previous Work</h3>
+      <div class="portfolio-gallery">
+        <div class="portfolio-item">
+          <div class="portfolio-preview"></div>
+          <input type="file" accept="image/*">
+          <input type="text" class="price-input" placeholder="Starting at $" />
+        </div>
+        <div class="portfolio-item">
+          <div class="portfolio-preview"></div>
+          <input type="file" accept="image/*">
+          <input type="text" class="price-input" placeholder="Starting at $" />
+        </div>
+        <div class="portfolio-item">
+          <div class="portfolio-preview"></div>
+          <input type="file" accept="image/*">
+          <input type="text" class="price-input" placeholder="Starting at $" />
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-buttons">
+      <button class="continue-btn">Continue</button>
+      <button class="back-btn">Back</button>
+    </div>
+  </div>
+
+  <script>
+    // Set Seller Since date
+    const signupDate = new Date();
+    const options = { year: 'numeric', month: 'long' };
+    document.getElementById("signupDate").textContent = signupDate.toLocaleDateString(undefined, options);
+
+    // Profile picture preview
+    function previewImage(event) {
+      const reader = new FileReader();
+      reader.onload = function(){
+        const preview = document.querySelector(".profile-pic-preview");
+        preview.style.backgroundImage = `url(${reader.result})`;
+        preview.style.backgroundSize = 'cover';  // Ensure the image always fits the circle
+        preview.style.backgroundPosition = 'center'; // Center the image
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+
+    // Portfolio image previews
+    document.querySelectorAll('.portfolio-item input[type="file"]').forEach((input, index) => {
+      input.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const preview = input.parentElement.querySelector('.portfolio-preview');
+          preview.style.backgroundImage = `url(${e.target.result})`;
+        };
+        if (file) {
+          reader.readAsDataURL(file);
+        }
+      });
+    });
+
+    // Go back button
+    document.querySelector(".back-btn").addEventListener("click", function() {
+      window.location.href = "ready-to-sell.html";
+    });
+    
+    // Go continue button
+    document.querySelector(".continue-btn").addEventListener("click", function() {
+      window.location.href = "billing.html";
+    });
+
+    // Price input formatting
+    document.querySelectorAll('.price-input').forEach(input => {
+      const originalPlaceholder = input.placeholder;
+
+      input.addEventListener('focus', () => {
+        input.placeholder = '';
+      });
+
+      input.addEventListener('blur', () => {
+        if (!input.value.trim()) {
+          input.placeholder = originalPlaceholder;
+        }
+      });
+
+      input.addEventListener('input', () => {
+        let value = input.value.replace(/[^\d.]/g, '');
+        const parts = value.split('.');
+        if (parts.length > 2) {
+          value = parts[0] + '.' + parts.slice(1).join('');
+        }
+        if (value) {
+          input.value = `$${value}`;
+        } else {
+          input.value = '';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
